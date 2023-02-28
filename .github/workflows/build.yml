@@ -11,7 +11,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    permissions: 
+      pull-requests: write
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET Core
@@ -41,6 +42,7 @@ jobs:
         output: 'both'
 
     - name: Add Coverage PR Comment
+       
       uses: marocchino/sticky-pull-request-comment@v2
       if: github.event_name == 'pull_request'
       with:
